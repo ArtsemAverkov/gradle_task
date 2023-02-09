@@ -1,0 +1,23 @@
+import java.util.concurrent.TimeUnit
+
+plugins{
+    id 'java'
+    id 'application'
+}
+
+apply from: 'library.gradle'
+apply plugin: GreetingPlugin.class
+
+
+
+class GreetingPlugin implements Plugin<Project> {
+    @Override
+    void apply(Project project) {
+        def start = System.nanoTime()
+        println "${TimeUnit.NANOSECONDS.toMicros(System.nanoTime() - start)}"
+    }
+}
+
+mainClassName = 'App'
+
+
